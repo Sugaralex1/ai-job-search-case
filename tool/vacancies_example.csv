@@ -1,7 +1,7 @@
-company_name,title,expected_net,schedule,b2b_it,no_car,growth,company
+company_name,title,expected_net,schedule,role_fit,no_car,growth,company
 Компанія A,Sales Manager (SaaS),55000,1,1,1,0.8,0.8
 Компанія B,Менеджер B2B продажів,45000,1,0.6,0.5,0.6,0.7
 Компанія C,Менеджер з продажу авто,60000,0,0.2,1,0.4,0.6
 Компанія D,Account Manager (CRM),40000,0.6,1,1,0.7,0.6
-Компанія E,Менеджер з продажу,30000,1,0.6,0,0.5,0.5
+Компанія E,Менеджер з продажу,25000,1,0.6,0,0.5,0.5
 Компанія F,Business Development Manager,70000,1,1,1,0.9,0.7
