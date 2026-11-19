@@ -23,7 +23,7 @@
 
 ## Як я працюю
 
-1. **Критерії.** Від 40 000 грн на руки, 5/2, B2B або IT, без обов'язкового авто.
+1. **Критерії.** Мінімальний дохід на руки, графік, сфера (B2B, IT), умови роботи.
 2. **Трекер.** Усі вакансії в одній таблиці: компанія, зарплата, графік, статус, наступний крок.
 3. **Скоринг.** Кожна вакансія отримує бал від 0 до 10. Відгукуюсь з верху списку.
 4. **Лист під компанію.** 4–6 речень, цифри, зв'язок мого досвіду з їхнім продуктом.
@@ -64,27 +64,39 @@ AI пришвидшує аналіз. Рішення і розмови мої.
 | [docs/process.md](docs/process.md) | Процес крок за кроком |
 | [templates/cover-letter-rules.md](templates/cover-letter-rules.md) | 10 правил супровідного листа |
 | [templates/negotiation-principles.md](templates/negotiation-principles.md) | 12 принципів переговорів про зарплату |
-| [tool/vacancy_score.py](tool/vacancy_score.py) | Скрипт скорингу вакансій |
+| [tool/vacancy_score.py](tool/vacancy_score.py) | Скрипт скорингу вакансій під різні ролі |
 
 ### Скоринг вакансій
 
+Працює не тільки для продажів. Є профілі під різні ролі, у кожного свої критерії і ваги:
+
+| Профіль | Роль | Головні критерії |
+|---|---|---|
+| `sales` | Продажі | зарплата, відповідність ролі, графік, ріст |
+| `hr` | HR, рекрутинг | зарплата, відповідність ролі, графік, компанія |
+| `frontend` | Frontend | зарплата, збіг стеку, віддалена робота |
+| `backend` | Backend | зарплата, збіг стеку, віддалена робота |
+| `devops` | DevOps | зарплата, збіг стеку, графік (чергування) |
+
 ```
-python tool/vacancy_score.py tool/vacancies_example.csv
+python tool/vacancy_score.py --list
+python tool/vacancy_score.py tool/vacancies_example.csv --profile sales
+python tool/vacancy_score.py tool/vacancies_it_example.csv --profile backend --min-salary 70000
 ```
 
 ```
+Профіль: Backend, мінімум 70000 грн
  Бал  Компанія       Посада
 --------------------------------------------------
- 9.2  Компанія F     Business Development Manager
- 8.6  Компанія A     Sales Manager (SaaS)
- 7.0  Компанія D     Account Manager (CRM)
- 6.5  Компанія B     Менеджер B2B продажів
- 4.8  Компанія C     Менеджер з продажу авто
- 3.0  Компанія E     Менеджер з продажу
+ 8.0  Компанія G     Backend Developer (Python)
+ 6.8  Компанія I     Middle Backend (Node.js)
+ 6.4  Компанія H     Backend Developer (Java)
+ 3.0  Компанія K     Python Developer
+ 2.8  Компанія J     Backend Developer (Go)
 ```
 
-Критерії і ваги: зарплата 30%, B2B/IT 20%, графік 15%, ріст 15%, авто 10%, компанія 10%.
-Нижче мінімальної зарплати вакансія не проходить. Python 3.8+, без бібліотек.
+Свій мінімум задається через `--min-salary`. Нижче мінімуму вакансія не проходить.
+Щоб додати свою роль, допишіть профіль у `PROFILES` у скрипті. Python 3.8+, без бібліотек.
 
 ---
 
@@ -92,4 +104,4 @@ python tool/vacancy_score.py tool/vacancies_example.csv
 
 I treated my sales job search as a sales funnel and used an AI assistant (Claude) as an analyst:
 vacancy scoring, offer comparison, cover letter drafts, interview role-plays and call reviews.
-Decisions, interviews and negotiations are mine. Includes a small Python tool for vacancy scoring. Status: in progress.
+Decisions, interviews and negotiations are mine. Includes a small Python tool for vacancy scoring with role profiles (sales, HR, frontend, backend, DevOps). Status: in progress.
